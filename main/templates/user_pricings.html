@@ -1,0 +1,29 @@
+{% extends "__base__.html" %}
+{% load static %}
+{% block title %}Szczegóły wyceny{% endblock title %}
+{% block content %}
+
+<h1 class="display-4">Moje wycenki</h1>
+<br>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Data wyceny</th>
+      <th scope="col">Klient</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for pricing in pricings %}
+    <tr onclick="window.location='/pricing/{{ pricing.id }}';" style="cursor: pointer;">
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ pricing.created }}</td>
+      <td>{{ pricing.client }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+
+{% endblock content %}

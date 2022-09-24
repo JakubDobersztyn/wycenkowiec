@@ -1,0 +1,37 @@
+{% extends "__base__.html" %}
+{% load static %}
+{% block title %}Szczegóły wyceny{% endblock title %}
+{% block content %}
+
+<h1 class="display-4">Wycena dla: {{ pricing.client }}</h1>
+<br>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nazwa usługi</th>
+      <th scope="col">Ilość</th>
+      <th scope="col">Cena</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for service in services %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ service.service.name }}</td>
+      <td>{{ service.quantity }} {{ service.service.unit }}</td>
+      <td>{{ service.cost|floatformat:2 }} zł</td>
+    </tr>
+  {% endfor %}
+  <tr>
+      <th scope="row"></th>
+      <td></td>
+      <td></td>
+      <td><b> Suma: {{ sum|floatformat:2 }} zł</b></td>
+    </tr>
+  </tbody>
+</table>
+
+
+{% endblock content %}

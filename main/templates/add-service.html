@@ -1,0 +1,27 @@
+{% extends "__base__.html" %}
+{% load static %}
+{% block title %}Dodaj usługę{% endblock title %}
+{% block content %}
+{% if message %}
+<div id="box" style="height: 25px; width: 130px; background-color: #90EE90">
+<p>&nbsp{{ message }}</p>
+  </div>
+{% endif %}
+<form method="post" action="">
+  {% csrf_token %}
+  <div class="mb-3 col-md-8">
+    <label for="id_name" class="form-label">Nazwa usługi</label>
+    {{ form.name }}
+  </div>
+  <div class="mb-3 col-md-1">
+    <label for="id_unit" class="form-label">Jednostka</label>
+    {{ form.unit }}
+  </div>
+  <div class="mb-3 col-md-1">
+    <label for="id_unit_price" class="form-label">Cena za jednostkę</label>
+    {{ form.unit_price }}
+  </div>
+  <button type="submit" class="btn btn-primary">Dodaj</button>
+</form>
+<script src="{% static "js/info.js" %}"></script>
+{% endblock content %}
